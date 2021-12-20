@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
             }
             if (state is HomeSuccessState) {
               return ListView.separated(
-                  itemBuilder: (context, index) => Text(state.movies[index].originalTitle),
+                  itemBuilder: (context, index) => Text(state.movies[index].title),
                   separatorBuilder: (context, intex) => const SizedBox(height: 16),
                   itemCount: state.movies.length,
                 );

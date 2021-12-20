@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:movie_flutter_amigos/app/data/entities/app_error.dart';
+import 'package:movie_flutter_amigos/app/data/entities/movie_entity.dart';
 import 'package:movie_flutter_amigos/app/data/models/movie_model.dart';
 
 abstract class HomeState extends Equatable {}
@@ -15,7 +16,7 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeSuccessState extends HomeState {
-  final List<MovieModel> movies; //entity
+  final List<MovieEntity> movies; //entity
 
   HomeSuccessState({required this.movies});
 

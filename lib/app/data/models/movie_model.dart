@@ -1,67 +1,71 @@
-class MovieModel {
-  final bool adult;
-  final String backdropPath;
- // final List<int> genreIds;
+import 'package:movie_flutter_amigos/app/data/entities/movie_entity.dart';
+
+class MovieModel extends MovieEntity {
   final int id;
-  final String originalLanguage;
-  final String originalTitle;
+  final bool adult;
+  final bool video;
+  final String title;
+  final int voteCount;
   final String overview;
   final String posterPath;
-  final String releaseDate;
-  final String title;
-  final bool video;
-  final double voteAverage;
-  final int voteCount;
   final double popularity;
+  final double voteAverage;
+  final String releaseDate;
+  final String backdropPath;
+  final String originalTitle;
+  final String originalLanguage;
 
   MovieModel({
-    required this.adult,
-    this.backdropPath = "",
-    //required this.genreIds,
     required this.id,
-    required this.originalLanguage,
-    required this.originalTitle,
-    required this.overview,
-    this.posterPath = "",
-    required this.releaseDate,
     required this.title,
     required this.video,
-    required this.voteAverage,
+    required this.adult,
+    required this.overview,
     required this.voteCount,
     required this.popularity,
-  });
+    required this.voteAverage,
+    required this.releaseDate,
+    required this.originalTitle,
+    required this.originalLanguage,
+    this.posterPath = "",
+    this.backdropPath = "",
+  }): super(
+    id: id,
+    rate: voteAverage,
+    overview: overview,
+    title: originalTitle,
+    posterPath: posterPath,
+  );
 
-  MovieModel.fromJson(Map<String, dynamic> data) :  
-      adult = data['adult'] ,
-      backdropPath = data['backdrop_path'],
-     //genreIds = data['genre_ids'] as List<int>,
-      id = data['id'] as int,
-      originalLanguage = data['original_language'],
-      originalTitle = data['original_title'],
-      overview = data['overview'],
-      posterPath = data['poster_path'],
-      releaseDate = data['release_date'],
-      title = data['title'],
-      video = data['video'] ,
-      voteAverage = data['vote_average'],
-      voteCount = data['vote_count'] ,
-      popularity = data['popularity'];
-      
+  factory MovieModel.fromJson(Map<String, dynamic> data) => MovieModel(
+    id : data['id'],
+    video : data['video'],
+    adult : data['adult'],
+    title : data['title'],
+    overview : data['overview'],
+    voteCount : data['vote_count'] ,
+    popularity : data['popularity'],
+    posterPath : data['poster_path'],
+    releaseDate : data['release_date'],
+    voteAverage : data['vote_average'],
+    backdropPath : data['backdrop_path'],
+    originalTitle : data['original_title'],
+    originalLanguage : data['original_language'],
+  );
 
   Map<String, dynamic> toJson() => {
-    'adult': adult,
-    'backdrop_path': backdropPath,
-    //'genre_ids': genreIds,
     'id': id,
-    'original_language': originalLanguage,
-    'original_title': originalTitle,
-    'overview': overview,
-    'poster_path': posterPath,
-    'release_date': releaseDate,
+    'adult': adult,
     'title': title,
     'video': video,
-    'vote_average': voteAverage,
+    'overview': overview,
     'vote_count': voteCount,
     'popularity': popularity,
+    'poster_path': posterPath,
+    'vote_average': voteAverage,
+    'release_date': releaseDate,
+    'backdrop_path': backdropPath,
+    'original_title': originalTitle,
+    'original_language': originalLanguage,
   };
 }
